@@ -32,10 +32,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.flatpages',
     'django.contrib.postgres',
 
     'bootstrap4',
+    'rest_framework',
     'debug_toolbar',
     'django_inlinecss',
     'django_apscheduler',
@@ -95,6 +97,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'main.context_processors.absolute_url',
             ],
         },
     },
@@ -217,6 +221,14 @@ MESSAGE_TAGS = {
     messages_constants.SUCCESS: 'alert-success',
     messages_constants.WARNING: 'alert-warning',
     messages_constants.ERROR: 'alert-danger',
+}
+
+
+# REST FRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ]
 }
 
 
