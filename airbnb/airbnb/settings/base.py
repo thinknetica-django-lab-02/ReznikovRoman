@@ -32,11 +32,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.flatpages',
     'django.contrib.postgres',
 
+    'rest_framework',
     'bootstrap4',
     'debug_toolbar',
+    'django_filters',
     'django_inlinecss',
     'django_apscheduler',
     'django_celery_beat',
@@ -95,6 +98,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'main.context_processors.absolute_url',
             ],
         },
     },
@@ -217,6 +222,19 @@ MESSAGE_TAGS = {
     messages_constants.SUCCESS: 'alert-success',
     messages_constants.WARNING: 'alert-warning',
     messages_constants.ERROR: 'alert-danger',
+}
+
+
+# REST FRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2,
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ]
 }
 
 

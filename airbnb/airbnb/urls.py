@@ -12,11 +12,15 @@ urlpatterns = [
     path('pages/', include('django.contrib.flatpages.urls')),
 
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('api-auth/', include('rest_framework.urls')),
 
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('realty/', include('realty.urls', namespace='realty')),
     path('hosts/', include('hosts.urls', namespace='hosts')),
     path('subscribers/', include('subscribers.urls', namespace='subscribers')),
+
+    path('api/v1/', include('realty.api.urls', namespace='api')),
+
     path('', include('main.urls')),
 ]
 
